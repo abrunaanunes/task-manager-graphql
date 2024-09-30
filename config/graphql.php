@@ -83,11 +83,9 @@ return [
                 'updateTask' => \App\GraphQL\Mutations\Task\UpdateTaskMutation::class,
                 'deleteTask' => \App\GraphQL\Mutations\Task\DeleteTaskMutation::class,
             ],
-            // The types only available in this schema
             'types' => [
-                // ExampleType::class,
+                'Task' => \App\GraphQL\Types\TaskType::class,
             ],
-
             // Laravel HTTP middleware
             'middleware' => null,
 
@@ -109,6 +107,7 @@ return [
     // ]
     //
     'types' => [
+        // Verificar a diferença entre este e o schemas.default.types
         'Task' => \App\GraphQL\Types\TaskType::class,
     ],
 

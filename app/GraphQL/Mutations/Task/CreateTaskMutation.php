@@ -17,7 +17,7 @@ class CreateTaskMutation extends Mutation
 
     public function type(): Type
     {
-        return GraphQL::type('task');
+        return GraphQL::type('Task');
     }
 
     public function args(): array
