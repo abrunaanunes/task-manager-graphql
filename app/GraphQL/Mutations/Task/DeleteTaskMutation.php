@@ -1,23 +1,20 @@
 <?php
 
-
 namespace App\GraphQL\Mutations\Task;
 
 use App\Models\Task;
-use Rebing\GraphQL\Support\Mutation;
 use GraphQL\Type\Definition\Type;
-use Rebing\GraphQL\Support\Facades\GraphQL;
+use Rebing\GraphQL\Support\Mutation;
 
 class DeleteTaskMutation extends Mutation
 {
     protected $attributes = [
         'name' => 'deleteTask',
-        'description' => 'deletes a task'
     ];
 
     public function type(): Type
     {
-        return Type::boolean();
+        return Type::nonNull(Type::boolean());
     }
 
     public function args(): array
@@ -33,9 +30,12 @@ class DeleteTaskMutation extends Mutation
 
     public function resolve($root, $args)
     {
-        $task = Task::findOrFail($args['id']);
+        $task = Task::find($args['id']);
+        if ($task) {
+            $task->delete();
+            return true; // Retorne true se a tarefa foi deletada
+        }
 
-        return  $task->delete() ? true : false;
+        return false; // Retorne false se a tarefa não foi encontrada
     }
-
 }
