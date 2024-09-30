@@ -83,6 +83,67 @@ As mutations permitem alterar dados. Exemplos de mutations incluem:
 
 Utilize uma ferramenta como [GraphiQL](https://graphql.org/swapi-graphql/) ou [Postman](https://www.postman.com/) para testar as queries e mutations.
 
+### Exemplos de Mutations e Queries GraphQL
+
+### 1. Criar Tarefa (Create Task)
+
+```graphql
+mutation {
+  createTask(title: "Nova Tarefa", description: "Descrição da nova tarefa") {
+    id
+    title
+    description
+  }
+}
+```
+
+### 2. Atualizar Tarefa (Update Task)
+
+```graphql
+mutation {
+  updateTask(id: 1, title: "Tarefa Atualizada", description: "Descrição atualizada") {
+    id
+    title
+    description
+    completed
+  }
+}
+```
+
+### 3. Excluir Tarefa (Delete Task)
+
+```graphql
+mutation {
+  deleteTask(id: 1)
+}
+```
+
+### 4. Listar Todas as Tarefas (List All Tasks)
+
+```graphql
+query {
+  tasks {
+    id
+    title
+    description
+    completed
+  }
+}
+```
+
+### 5. Listar uma Tarefa (List Task)
+
+```graphql
+query {
+  task(id: 1) {
+    id
+    title
+    description
+    completed
+  }
+}
+```
+
 ## Contribuições
 
 Contribuições são bem-vindas! Sinta-se à vontade para abrir um issue ou pull request.
